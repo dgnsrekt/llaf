@@ -3,11 +3,14 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime
 
-dag = DAG(
-    dag_id="my_first_dag",
-    start_date=airflow.utils.dates.days_ago(2),
-    schedule_interval="0 2 * * *",
-)
+# TEST
+args = {
+    "owner": "dgnsrekt",
+    "start_date": airflow.utils.dates.days_ago(2),
+    "depends_on_past": False,
+}
+
+dag = DAG(dag_id="my_first_dag", default_args=args, schedule_interval="0 2 * * *",)
 
 
 def print_hello():

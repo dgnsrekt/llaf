@@ -11,6 +11,17 @@ services:
                 max-size: 10m
                 max-file: "3"
 
+    postgres_2:
+        image: postgres:9.6
+        environment:
+            - POSTGRES_USER=dgnsrekt
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_DB=main_db
+        logging:
+            options:
+                max-size: 10m
+                max-file: "3"
+
     webserver:
         image: puckel/docker-airflow:1.10.9
         restart: always
